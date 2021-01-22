@@ -46,7 +46,7 @@ class UserController extends Controller
 
 		return response($response);
     }
-}
+
 
 	public function login(Request $request){
 	        $response = "";
@@ -98,3 +98,4 @@ class UserController extends Controller
 	        }
 	  
 	    }
+	}
