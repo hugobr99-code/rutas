@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use \Firebase\JWT\JWT;
 use Illuminate\Support\Str;
 
+
 class UserController extends Controller
 {
     //
@@ -98,4 +99,24 @@ class UserController extends Controller
 	        }
 	  
 	    }
-	}
+	public function changePassword(Request $request){
+
+        $response = "";
+
+        $data = User::where('email',$request->email) -> first();
+
+        $newPassword = Str::random(10);
+
+        $hashedPassword = Hash::make($newPassword);
+
+        try{
+            $data->password = $hashedPassword;
+            $data->save();
+            $response = "Esta es tu nueva contraseña: " . $newPassword;
+        }catch(\Exception $e){
+            $response = $e->getMessage();
+        }
+
+        return response($response);
+    }
+}

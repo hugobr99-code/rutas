@@ -20,5 +20,5 @@ use App\Http\Controllers\UserController;
 Route::prefix('users')->group(function () {
 	Route::post('/create',[UserController::class, 'createUser']);
 	Route::post('/login',[UserController::class,'login']);
-	//Route::post('/password',[UserController::class,'changePassword']);
+	Route::post('/password',[UserController::class,'changePassword']);
 });
