@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Coordinate extends Model
 {
     use HasFactory;
+    public function routes(){
+    	return $this->belongsToMany(Route::class);
+    }
 }
