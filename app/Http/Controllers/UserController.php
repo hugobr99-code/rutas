@@ -99,25 +99,78 @@ class UserController extends Controller
 	        }
 	  
 	    }
+
+	   /* public function update(Request $request, $email)
+    {
+        $user = User::findOrFail($email);
+        $user->password = $request->password;
+        $user->save();
+        return $user;
+    }*/
+
+	/*public function changePassword(Request $request){
+
+        $response = "";
+
+
+    	//Leer el contenido de la petición
+		$data = $request->getContent();
+
+		//Decodificar el json
+		$data = json_decode($data);
+
+		if($data){
+			$data->email = $data->email;
+			$data->password = $data->password;
+			$user = User::where('email',$data->email) -> first();
+
+
+        try{
+            
+        	print_r($user->password);
+
+
+            
+        }catch(\Exception $e){
+            $response = $e->getMessage();
+        }
+        }
+
+        return response($response);
+    }*/
 	public function changePassword(Request $request){
 
         $response = "";
 
-        $data = User::where('email',$request->email) -> first();
-        
-        $newPassword = Str::random(10);
 
-        $hashedPassword = Hash::make($newPassword);
+    	//Leer el contenido de la petición
+		$data = $request->getContent();
+
+		//Decodificar el json
+		$data = json_decode($data);
+
+		if($data->email){
+			
+
+			$user = User::where('email',$data->email) -> first();
+        
 
         try{
-            $data->password = $hashedPassword;
+        	$newPassword = Str::random(10);
 
-            $data->save();
+        	$hashedPassword = Hash::make($newPassword);
+            
+            $user->password = $hashedPassword;
+
+            $user->save();
+
             $response = "Esta es tu nueva contraseña: " . $newPassword;
+
         }catch(\Exception $e){
             $response = $e->getMessage();
         }
-
+        }
         return response($response);
-    }
+    	
+	}
 }
