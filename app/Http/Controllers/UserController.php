@@ -104,13 +104,14 @@ class UserController extends Controller
         $response = "";
 
         $data = User::where('email',$request->email) -> first();
-
+        
         $newPassword = Str::random(10);
 
         $hashedPassword = Hash::make($newPassword);
 
         try{
             $data->password = $hashedPassword;
+
             $data->save();
             $response = "Esta es tu nueva contraseña: " . $newPassword;
         }catch(\Exception $e){
