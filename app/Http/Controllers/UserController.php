@@ -33,6 +33,7 @@ class UserController extends Controller
 			$user->name = $data->name;
 			$user->email = $data->email;
 			$user->password = Hash::make($data->password);
+			//$user->password = $data->password;
 
 
 			try{
@@ -100,13 +101,35 @@ class UserController extends Controller
 	  
 	    }
 
-	   /* public function update(Request $request, $email)
+	    public function update(Request $request)
     {
-        $user = User::findOrFail($email);
-        $user->password = $request->password;
-        $user->save();
+    	$response = "";
+
+
+    	//Leer el contenido de la petición
+		$data = $request->getContent();
+
+		//Decodificar el json
+		$data = json_decode($data);
+        
+        if($data){
+
+        $data->email = $data->email;
+        $user = User::where('email',$data->email) -> first();
+        $user->password = Hash::make($data->newPassword);
+        //$user->newPassword = Hash::make($data->newPassword);
+        //$user->newPassword = $data->newPassword;
+
+        try{
+        	//$user->password = $newPassword;
+				$user->save();
+				$response = "OK";
+			}catch(\Exception $e){
+				$response = $e->getMessage();
+			}
+    }
         return $user;
-    }*/
+    }
 
 	/*public function changePassword(Request $request){
 

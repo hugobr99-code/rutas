@@ -21,5 +21,5 @@ Route::prefix('users')->group(function () {
 	Route::post('/create',[UserController::class, 'createUser']);
 	Route::post('/login',[UserController::class,'login']);
 	Route::post('/password',[UserController::class,'changePassword']);
-	Route::post('/update',[UserController::class,'update']);
+	Route::post('/update',[UserController::class,'update'])->middleware('auth');;
 });
