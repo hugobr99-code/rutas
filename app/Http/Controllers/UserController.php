@@ -131,36 +131,6 @@ class UserController extends Controller
         return $user;
     }
 
-	/*public function changePassword(Request $request){
-
-        $response = "";
-
-
-    	//Leer el contenido de la petición
-		$data = $request->getContent();
-
-		//Decodificar el json
-		$data = json_decode($data);
-
-		if($data){
-			$data->email = $data->email;
-			$data->password = $data->password;
-			$user = User::where('email',$data->email) -> first();
-
-
-        try{
-            
-        	print_r($user->password);
-
-
-            
-        }catch(\Exception $e){
-            $response = $e->getMessage();
-        }
-        }
-
-        return response($response);
-    }*/
 	public function changePassword(Request $request){
 
         $response = "";
