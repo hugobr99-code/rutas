@@ -9,6 +9,7 @@ use \Firebase\JWT\JWT;
 use Illuminate\Support\Str;
 
 
+
 class UserController extends Controller
 {
     //
@@ -77,7 +78,7 @@ class UserController extends Controller
 
 	                        $user->save();
 
-	                        $response = $token;
+	                        //$response = $token;
 	                      
 	                        return response()->json([
 	                           'message' => 'Bienvenido'
@@ -101,7 +102,45 @@ class UserController extends Controller
 	  
 	    }
 
-	    public function update(Request $request)
+	    public function logout(Request $request)
+		{
+    		$response = "";
+
+
+    	//Leer el contenido de la petición
+		$data = $request->getContent();
+
+		//Decodificar el json
+		$data = json_decode($data);
+
+		//Si hay un json válido, crear el usuario
+		if($data){
+
+			$user = new User();
+
+			//TODO: Validar los datos antes de guardar el usuario
+
+			$user->api_token = $data->api_token;
+
+
+			try{
+				$user->api_token = "";
+				$user->save();
+				$response = "OK";
+			}catch(\Exception $e){
+				$response = $e->getMessage();
+			}
+
+		}
+
+
+		return response($response);
+
+    		
+    }
+		
+
+	    public function updatePassword(Request $request)
     {
     	$response = "";
 
