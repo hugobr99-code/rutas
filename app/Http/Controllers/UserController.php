@@ -72,7 +72,9 @@ class UserController extends Controller
 
 	                        $key = "hnuiklgefvauihntaerfviuhnesrvtb896IKJSHD/*-º<34NDR35";
 
-	                        $token = JWT::encode($data->email, $key);
+	                        $randomString = Str::random(20);
+
+	                        $token = JWT::encode($randomString, $key);
 
 	                        $user->api_token = $token;
 
@@ -107,6 +109,7 @@ class UserController extends Controller
     		$response = "";
 
 
+
     	//Leer el contenido de la petición
 		$data = $request->getContent();
 
@@ -115,8 +118,8 @@ class UserController extends Controller
 
 		//Si hay un json válido, crear el usuario
 		if($data){
-
-			$user = new User();
+			$data->email = $data->email;
+			$user = User::where('email',$data->email) -> first();
 
 			//TODO: Validar los datos antes de guardar el usuario
 
