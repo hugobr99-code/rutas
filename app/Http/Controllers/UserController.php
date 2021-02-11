@@ -164,6 +164,7 @@ class UserController extends Controller
         //$user->newPassword = Hash::make($data->newPassword);
         //$user->newPassword = $data->newPassword;
 
+
         try{
         	//$user->password = $newPassword;
 				$user->save();
