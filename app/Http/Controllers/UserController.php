@@ -83,7 +83,9 @@ class UserController extends Controller
 	                        //$response = $token;
 	                      
 	                        return response()->json([
-	                           'message' => 'Bienvenido'
+	                           'message' => 'Bienvenido',
+	                           'token'  => $token,
+	                           'user' => $user->name
 	                       ]);
 
 	                    }else{
@@ -170,7 +172,11 @@ class UserController extends Controller
 				$response = $e->getMessage();
 			}
     }
-        return $user;
+        return response()->json([
+           'message' => 'Tu nueva contraseña es:',
+           'password'  => $newPassword,
+           
+	                       ]);
     }
 
 	public function changePassword(Request $request){
