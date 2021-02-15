@@ -155,11 +155,21 @@ class UserController extends Controller
 
 		//Decodificar el json
 		$data = json_decode($data);
-        
+        //$user = new User;
         if($data){
+		$user = User::where('email',$data->email) -> first();
+        if(!Hash::check($data->currentPassword, $user->password)){
 
+        	return response()->json([
+           'message' => 'Tu contraseña no coincide'
+            
+           
+	                       ]);
+        }else{
+    	
+    	
         $data->email = $data->email;
-        $user = User::where('email',$data->email) -> first();
+        //$user1 = User::where('email',$data->email) -> first();
         $user->password = Hash::make($data->newPassword);
         //$user->newPassword = Hash::make($data->newPassword);
         //$user->newPassword = $data->newPassword;
@@ -172,13 +182,13 @@ class UserController extends Controller
 			}catch(\Exception $e){
 				$response = $e->getMessage();
 			}
-    }
+    
         return response()->json([
-           'message' => 'Tu nueva contraseña es:',
-           'password'  => $newPassword,
+           'message' => 'Contraseña cambiada con éxito'
+          
            
 	                       ]);
-    }
+    }}}
 
 	public function changePassword(Request $request){
 
