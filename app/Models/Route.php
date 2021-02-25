@@ -11,4 +11,7 @@ class Route extends Model
      public function monuments(){
     	return $this->hasMany(Monument::class);
     }
+    public function coordinates(){
+    	return $this->hasMany(Coordinate::class);
+    }
 }

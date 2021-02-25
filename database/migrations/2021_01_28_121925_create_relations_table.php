@@ -17,11 +17,11 @@ class CreateRelationsTable extends Migration
             $table->id();
             $table->timestamps();
         });
-        Schema::table('routes',function(Blueprint $table){
-            $table->foreignId('monuments_id')->constrained()->nullable();
-        });
         Schema::table('monuments',function(Blueprint $table){
-            $table->foreignId('coordinates_id')->constrained()->nullable();
+            $table->foreignId('routes_id')->constrained()->nullable();
+        });
+        Schema::table('coordinates',function(Blueprint $table){
+            $table->foreignId('routes_id')->constrained()->nullable();
         });
     }
 
@@ -32,13 +32,13 @@ class CreateRelationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('routes', function (Blueprint $table){
-            $table->dropForeign(['monuments_id']);
-            $table->dropColumn('monuments_id');
+        Schema::table('coordinates', function (Blueprint $table){
+            $table->dropForeign(['routes_id']);
+            $table->dropColumn('routes_id');
         });
         Schema::table('monuments', function (Blueprint $table){
-            $table->dropForeign(['coordinates_id']);
-            $table->dropColumn('coordinates_id');
+            $table->dropForeign(['routes_id']);
+            $table->dropColumn('routes_id');
         });
         Schema::dropIfExists('relations');
     }

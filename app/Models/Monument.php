@@ -9,9 +9,7 @@ class Monument extends Model
 {
     use HasFactory;
      public function routes(){
-    	return $this->belongsToMany(Route::class);
+    	return $this->belongsToOne(Route::class);
     }
-    public function coordinates(){
-    	return $this->hasOne(Monument::class);
-    }
+   
 }

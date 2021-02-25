@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\CoordinateController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +25,11 @@ Route::prefix('users')->group(function () {
 	Route::post('/update',[UserController::class,'updatePassword'])->middleware('auth');
 	Route::post('/logout',[UserController::class,'logout'])->middleware('auth');
 });
+Route::prefix('routes')->group(function () {
+	Route::get('/list/{id}',[RouteController::class,"listRoute"]);
+});
+Route::prefix('coordinates')->group(function () {
+	Route::post('/list',[CoordinateController::class,"listCoordinates"]);
+});
+
+

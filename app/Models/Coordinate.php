@@ -9,6 +9,6 @@ class Coordinate extends Model
 {
     use HasFactory;
     public function routes(){
-    	return $this->belongsToMany(Route::class);
+    	return $this->belongsToOne(Route::class);
     }
 }
