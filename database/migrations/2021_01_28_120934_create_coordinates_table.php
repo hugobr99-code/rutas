@@ -16,8 +16,8 @@ class CreateCoordinatesTable extends Migration
         Schema::create('coordinates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('altitude');
             $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
         });
     }
