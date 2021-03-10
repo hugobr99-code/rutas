@@ -23,7 +23,7 @@ class RouteController extends Controller
 					"name" => $route->name,
 					//"info" => $route->Monument->info,
 					//"image" => $route->Monument->image,
-					"altitude" => $route->Coordinate->coordinates->altitude,
+					"longitude" => $route->Coordinate->coordinates->longitude,
 					"latitude" => $route->Coordinate->coordinates->latitude
 					
 				]
