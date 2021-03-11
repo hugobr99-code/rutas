@@ -18,6 +18,7 @@ class CreateMonumentsTable extends Migration
             $table->string('name');
             $table->string('info');
             $table->string('image');
+            $table->string('clue');
             $table->string('latitudeM');
             $table->string('altitudeM');
             $table->timestamps();
