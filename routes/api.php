@@ -27,6 +27,7 @@ Route::prefix('users')->group(function () {
 });
 Route::prefix('routes')->group(function () {
 	Route::get('/list/{id}',[RouteController::class,"listRoute"]);
+	Route::get('/prueba',[RouteController::class,"prueba"]);
 });
 Route::prefix('coordinates')->group(function () {
 	Route::post('/list',[CoordinateController::class,"listCoordinates"]);

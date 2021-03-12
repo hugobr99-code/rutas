@@ -33,4 +33,9 @@ class RouteController extends Controller
 
 		return response("Monumento no encontrado");
 	}
+	public function prueba(){
+
+		return "AWS";
+
+	}
 }
