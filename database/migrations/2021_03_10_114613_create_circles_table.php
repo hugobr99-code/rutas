@@ -18,6 +18,9 @@ class CreateCirclesTable extends Migration
             $table->string("latitudeC");
             $table->string("longitudeC");
             $table->string("radiusC");
+            $table->string("latitudeG");
+            $table->string("longitudeG");
+            $table->string("radiusG");
             $table->timestamps();
         });
     }

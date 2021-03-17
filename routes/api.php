@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\CoordinateController;
 use App\Http\Controllers\MonumentController;
+use App\Http\Controllers\CircleController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,6 +36,9 @@ Route::prefix('coordinates')->group(function () {
 });
 Route::prefix('monuments')->group(function () {
 	Route::post('/list',[MonumentController::class,"listMonument"]);
+});
+Route::prefix('circles')->group(function () {
+	Route::post('/list',[CircleController::class,"listCircle"]);
 });
 
 

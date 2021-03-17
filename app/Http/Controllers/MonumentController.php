@@ -21,8 +21,6 @@ class MonumentController extends Controller
 
 	$monuments = Monument::where('name', $data->name)->first();
 
-
-
 	return response()->json(
 
 	[	
