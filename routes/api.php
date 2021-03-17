@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\CoordinateController;
+use App\Http\Controllers\MonumentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +32,9 @@ Route::prefix('routes')->group(function () {
 });
 Route::prefix('coordinates')->group(function () {
 	Route::post('/list',[CoordinateController::class,"listCoordinates"]);
+});
+Route::prefix('monuments')->group(function () {
+	Route::post('/list',[MonumentController::class,"listMonument"]);
 });
 
 
