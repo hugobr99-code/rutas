@@ -21,8 +21,6 @@ class RouteController extends Controller
 				[
 					"id" => $route->id,
 					"name" => $route->name,
-					//"info" => $route->Monument->info,
-					//"image" => $route->Monument->image,
 					"longitude" => $route->Coordinate->coordinates->longitude,
 					"latitude" => $route->Coordinate->coordinates->latitude
 					

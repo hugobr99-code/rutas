@@ -38,7 +38,6 @@ class UserController extends Controller
         $user->name = $data->name;
         $user->email = $data->email;
         $user->password = Hash::make($data->password);
-//$user->password = $data->password;
 
 
         try{

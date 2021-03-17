@@ -8,32 +8,6 @@ use App\Models\Route;
 
 class CoordinateController extends Controller
 {
-    //
-    /*public function listCoordinates(Request $request,$routes_id){
-
-   
-
-$coordinate = Coordinate::where('routes_id',$routes_id)->get()->first();
-
-$Routes_id = $coordinate->routes_id;
-
-
-if($coordinate){
-
-return response()->json(
-
-[
-"routes_id" => $Routes_id,
-"altitude" => $coordinate->altitude,
-"latitude" => $coordinate->latitude
-
-]
-
-);
-}
-
-return response("Coordenada no encontrada");
-}*/
 
 public function listCoordinates(Request $request){
 	$response = "";
